@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 import com.evertonjunior.workshopmongo.domain.Post;
 import com.evertonjunior.workshopmongo.domain.User;
+import com.evertonjunior.workshopmongo.dto.AuthorDTO;
 import com.evertonjunior.workshopmongo.repository.PostRepository;
 import com.evertonjunior.workshopmongo.repository.UserRepository;
 
@@ -33,8 +34,8 @@ public class Instantiation implements CommandLineRunner {
 
 		userRepository.saveAll(Arrays.asList(maria,alex,bob));
 		
-		Post post1 = new Post(null, Instant.now(),"Partiu viagem ", "Vou viajar para o Rio de Janeiro, beijoss!", maria );
-		Post post2 = new Post(null, Instant.now(),"Bom dia ", "Acordei feliz hoje", alex );
+		Post post1 = new Post(null, Instant.now(),"Partiu viagem ", "Vou viajar para o Rio de Janeiro, beijoss!", new AuthorDTO(maria));
+		Post post2 = new Post(null, Instant.now(),"Bom dia ", "Acordei feliz hoje", new AuthorDTO(alex));
 		
 		postRepository.saveAll(Arrays.asList(post1,post2));
 	}
