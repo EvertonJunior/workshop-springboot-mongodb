@@ -35,13 +35,8 @@ public class Instantiation implements CommandLineRunner {
 
 		userRepository.saveAll(Arrays.asList(maria,alex,bob));
 		
-		Post post1 = new Post(null, Instant.now(),"Partiu viagem ", "Vou viajar para o Rio de Janeiro, beijoss!", new AuthorDTO(maria));
+		Post post1 = new Post(null, Instant.now(),"Partiu viagem", "Vou viajar para o Rio de Janeiro, beijoss!", new AuthorDTO(maria));
 		Post post2 = new Post(null, Instant.now(),"Bom dia ", "Acordei feliz hoje", new AuthorDTO(maria));
-		
-		postRepository.saveAll(Arrays.asList(post1,post2));
-		
-		maria.getPosts().addAll(Arrays.asList(post1, post2));
-		userRepository.saveAll(Arrays.asList(maria,alex,bob));
 		
 		CommentDTO comment1 = new CommentDTO("Boa viagemmm", Instant.now(), new AuthorDTO(alex));
 		CommentDTO comment2 = new CommentDTO("Aproveite", Instant.now(), new AuthorDTO(bob));
@@ -50,7 +45,13 @@ public class Instantiation implements CommandLineRunner {
 		
 		post1.getComments().addAll(Arrays.asList(comment1, comment2));
 		post2.getComments().add(comment3);
+		
+		maria.getPosts().addAll(Arrays.asList(post1, post2));
+		
 		postRepository.saveAll(Arrays.asList(post1,post2));
+
+		userRepository.saveAll(Arrays.asList(maria,alex,bob));
+
 		
 	}
 
